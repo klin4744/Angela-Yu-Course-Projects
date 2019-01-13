@@ -2,3 +2,18 @@ img {
   width: 25vh;
   border-radius: 50%;
 }
+body {
+  background-color: #eaf6f6;
+}
+hr {
+  border-style: none;
+  border-top: dotted 5px lightgray;
+  width: 5%;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h3 {
+  color: #66bfbf;
+}
