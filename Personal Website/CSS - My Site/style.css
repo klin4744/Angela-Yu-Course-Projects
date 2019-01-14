@@ -1,9 +1,11 @@
 body {
   margin: 0;
+  text-align: center;
 }
 .top-container {
   background-color: #e4f9f5;
-  padding: 20px;
+  position: relative;
+  padding-top: 100px;
 }
 .mid-container {
   background-color: red;
@@ -20,4 +22,12 @@ h1 {
 }
 .pro {
   text-decoration: underline;
+}
+.second-cloud {
+  position: absolute;
+}
+.top-cloud {
+  position: relative;
+  left: 200px;
+  bottom: 20px;
 }
