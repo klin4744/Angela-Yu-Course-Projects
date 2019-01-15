@@ -10,7 +10,8 @@ body {
   height: 100%;
 }
 .middle-container {
-  margin-top: 100px;
+  margin: 100px auto 0 auto;
+  width: 75%;
 }
 .bottom-container {
   background-color: #66bfbf;
