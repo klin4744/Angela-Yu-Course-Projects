@@ -50,6 +50,22 @@ a {
 .programmer {
   font-weight: normal;
 }
+.skill-row {
+  width: 50%;
+  margin: 100px auto;
+  text-align: left;
+  line-height: 2;
+}
+.skill-1 {
+  width: 25%;
+  float: left;
+  margin-right: 30px;
+}
+.skill-2 {
+  width: 25%;
+  float: right;
+  margin-left: 30px;
+}
 @media only screen and (max-width: 1100px) {
   .top-cloud {
     right: 10vw;
