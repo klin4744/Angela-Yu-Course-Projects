@@ -95,10 +95,10 @@ hr {
   background-image: -ms-linear-gradient(top, #66bfbf, #11999e);
   background-image: -o-linear-gradient(top, #66bfbf, #11999e);
   background-image: linear-gradient(to bottom, #66bfbf, #11999e);
-  -webkit-border-radius: 6;
-  -moz-border-radius: 6;
-  border-radius: 6px;
-  font-family: Arial;
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: "Merriweather", serif;
   color: #ffffff;
   font-size: 20px;
   padding: 15px 20px 15px 20px;
