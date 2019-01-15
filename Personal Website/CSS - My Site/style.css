@@ -9,9 +9,9 @@ body {
   padding-top: 100px;
   height: 100%;
 }
-.middle-container {
+.profile {
   margin: 100px auto 0 auto;
-  width: 75%;
+  width: 50%;
 }
 .bottom-container {
   background-color: #66bfbf;
@@ -46,6 +46,7 @@ a {
 }
 p {
   color: #40514e;
+  line-height: 2;
 }
 hr {
   border: none;
@@ -76,7 +77,6 @@ hr {
   width: 50%;
   margin: 100px auto;
   text-align: left;
-  line-height: 2;
 }
 .skill-1 {
   width: 25%;
@@ -117,6 +117,7 @@ hr {
 }
 .contact-me {
   margin: 100px auto;
+  width: 45%;
 }
 .contact-me p {
   margin-bottom: 70px;
