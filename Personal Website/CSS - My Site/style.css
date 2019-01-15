@@ -44,6 +44,9 @@ a {
   margin: 0 30px;
   font-weight: bold;
 }
+a:hover {
+  color: white;
+}
 p {
   color: #40514e;
   line-height: 2;
