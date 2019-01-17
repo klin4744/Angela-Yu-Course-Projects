@@ -1,20 +1,30 @@
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Montserrat", sans-serif;
 }
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", sans-serif;
+}
+h2,
+h3 {
+  font-weight: 700;
+}
+h2 {
+  line-height: 1.5;
+}
+
+/* Headings */
+.big-heading {
   font-weight: 900;
   font-size: 3.5rem;
   line-height: 1.5;
-}
-h2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  line-height: 1.5;
-}
-h3 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
 }
 /* Head section */
 #title {
@@ -124,9 +134,8 @@ i:hover {
   font-size: 0.8rem;
   margin-top: 10px;
 }
-.top-row {
-  width: 65%;
-  margin: 0 auto;
+.f-icon {
+  margin: 20px 10px;
 }
 
 @media (max-width: 1028px) {
