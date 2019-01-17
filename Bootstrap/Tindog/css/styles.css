@@ -115,6 +115,20 @@ i:hover {
 #cta button {
   margin: 40px 10px;
 }
+/* Footer */
+#footer {
+  padding: 8% 35%;
+}
+#footer p {
+  color: grey;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+.top-row {
+  width: 65%;
+  margin: 0 auto;
+}
+
 @media (max-width: 1028px) {
   .iphone-mockup {
     transform: rotate(0);
