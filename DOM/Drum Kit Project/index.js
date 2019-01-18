@@ -12,31 +12,31 @@ function handleButtonPress(e) {
   let audio;
   switch (key) {
     case 87:
-      audio = new Audio("./sounds/crash.mp3");
+      buttons[0].click();
       break;
     case 65:
-      audio = new Audio("./sounds/kick-bass.mp3");
+      buttons[1].click();
       break;
     case 83:
-      audio = new Audio("./sounds/snare.mp3");
+      buttons[2].click();
       break;
     case 68:
-      audio = new Audio("./sounds/tom-1.mp3");
+      buttons[3].click();
       break;
     case 74:
-      audio = new Audio("./sounds/tom-2.mp3");
+      buttons[4].click();
       break;
     case 75:
-      audio = new Audio("./sounds/tom-3.mp3");
+      buttons[5].click();
       break;
     case 76:
-      audio = new Audio("./sounds/tom-4.mp3");
+      buttons[6].click();
       break;
   }
-  audio.play();
 }
 function handleClick(e) {
   let text = e.target.innerText;
+  let button = document.querySelector(`.${text}`);
   let audio;
   switch (text) {
     case "w":
@@ -61,5 +61,9 @@ function handleClick(e) {
       audio = new Audio("./sounds/tom-4.mp3");
       break;
   }
+  button.classList.add("pressed");
   audio.play();
+  setTimeout(() => {
+    button.classList.remove("pressed");
+  }, 200);
 }
