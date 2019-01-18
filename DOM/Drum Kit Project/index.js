@@ -8,31 +8,8 @@ document.querySelector("body").addEventListener("keydown", handleButtonPress);
 // wasdjkl
 // 87 65 83 68 74 75 76
 function handleButtonPress(e) {
-  let key = e.keyCode;
-  let audio;
-  switch (key) {
-    case 87:
-      buttons[0].click();
-      break;
-    case 65:
-      buttons[1].click();
-      break;
-    case 83:
-      buttons[2].click();
-      break;
-    case 68:
-      buttons[3].click();
-      break;
-    case 74:
-      buttons[4].click();
-      break;
-    case 75:
-      buttons[5].click();
-      break;
-    case 76:
-      buttons[6].click();
-      break;
-  }
+  let key = e.key;
+  document.querySelector(`.${key}`).click();
 }
 function handleClick(e) {
   let text = e.target.innerText;
