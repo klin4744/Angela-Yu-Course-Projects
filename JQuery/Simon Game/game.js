@@ -29,7 +29,7 @@ function animatePress(currentColor) {
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     if (userClickedPattern.length === gamePattern.length) {
-      setTimeout(nextSequence(), 2000);
+      setTimeout(() => nextSequence(), 1000);
     }
   } else {
     $("body").addClass("game-over");
