@@ -16,7 +16,6 @@ function nextSequence() {
     .fadeOut(100)
     .fadeIn(100);
   playSound(randomChosenColor);
-  console.log(gamePattern);
 }
 function playSound(color) {
   let sound = new Audio(`./sounds/${color}.mp3`);
@@ -30,7 +29,7 @@ function animatePress(currentColor) {
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     if (userClickedPattern.length === gamePattern.length) {
-      setTimeout(nextSequence(), 1000);
+      setTimeout(nextSequence(), 2000);
     }
   } else {
     $("body").addClass("game-over");
@@ -49,7 +48,6 @@ $(".btn").click(e => {
   playSound(userChosenColor);
   animatePress(userChosenColor);
   checkAnswer(userClickedPattern.length - 1);
-  console.log(userClickedPattern);
 });
 $("body").keypress(() => {
   if (!started) {
@@ -57,5 +55,4 @@ $("body").keypress(() => {
     nextSequence();
     started = true;
   }
-  console.log(started);
 });
