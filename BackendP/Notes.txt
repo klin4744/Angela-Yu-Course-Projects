@@ -36,5 +36,8 @@ to exit REPL or anything, type CTRL C
 
 
 // Using Native Node Modules
-// Nodejs.ord/api shows us node's documentation. There are a plethora of methods that allow us to access the file system. To use a module, we must first require it
+// Nodejs.org/api shows us node's documentation. There are a plethora of methods that allow us to access the file system. To use a module, we must first require it
 const fs = require("fs"); for example, gives us access to the file system module
+
+// Using External Node Modules 
+
