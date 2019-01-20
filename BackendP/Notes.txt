@@ -1,0 +1,40 @@
+What is the Backend?
+-The backend consists of things like a server (which serves data), a database which stores data, and a application which will determine how a web application works
+
+For example: if we go to Eventbrite and book a ticket,the information gets saved on Eventbrite's database. In the future, if you log back in to Eventbrite, the data is retrieved from the database.
+
+Restuarant Analogy - The client-side or what the user sees and interacts with is the restaurant. The kitchen is our server, it "sends" information, and finally the larder stores food or data. You can store data on the front end but users will be able to get your data this way and makes grabbing data MUCH slower.
+
+Backend Technologies
+PHP (Cake PHP), Ruby (Rails), Java (Spring), Node JS (Express), Python, ASP .NET
+These frameworks will reduce repetition and save alot of lines!
+
+//////////////
+// Node JS //
+/////////////
+Node JS allows us to create a backend using Javascript! This saves us time from learning a new language. Node is also super fast and allows us to create really scalable websites. Ebay, Twitter, Netflix, Uber, etc use Node js. 
+
+Without Node JS, we can only reach stuff within the browser.
+
+Node JS allows us to take JavaScript out of the browser and interact with hardware inside the computer. It allows JavaScript to create desktop applications, etc.
+
+Node JS can also run on a server, we can execute javascript code to process a request!
+
+on gitBash
+
+1. pwd - Print working directory, prints the path of the directory you are currently in.
+2. use cd to navigate to the folder you want to build in
+3. We can now use node to run a JavaScript file inside our terminal node filename, this means use node to run our file
+
+REPL - Read Evaluation Print Loop
+- Allows you to execute code in chunks, one line at a time!
+- To use this just type node in terminal which puts us in REPL 
+- Inside REPL, we can run code directly
+- We can also use tab here to auto complete, hitting it twice shows u all the commands you can run at the moment following an uncompleted command. Typing . shows all the methods of that command 
+to exit REPL or anything, type CTRL C
+- Clear will clear the console
+
+
+// Using Native Node Modules
+// Nodejs.ord/api shows us node's documentation. There are a plethora of methods that allow us to access the file system. To use a module, we must first require it
+const fs = require("fs"); for example, gives us access to the file system module

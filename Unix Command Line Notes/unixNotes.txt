@@ -25,3 +25,5 @@ BE REALLY CAREFUL USING rm *, make sure you are in the correct directory
 rm ONLY removes files, not folders!
 
 rm -r directoryName/ - Removes a directory and all the files/folders inside it
+
+sudo before a command gives the command admin permissions
