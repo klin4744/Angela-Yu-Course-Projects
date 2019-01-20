@@ -1,0 +1,27 @@
+Directory Navigation
+ls - Lists all the items in the current directory 
+cd - Changes your directory to the passed in directory.
+   - cd Documents
+   - If you start typing then hit tab, the terminal will auto fill!
+   - To go backwards cd .. brings you back one directory
+   - You can drag folders into the terminal to automatically get the path
+   - You can hold down alt to select a specific part of the link
+   - Ctrl A goes to begining of line Ctrl E goes to the end
+   - To clear Ctrl + U clears the line;
+mkdir - Creates a new directory
+touch - creates a new file
+touch Text2.txt, creates a new text file
+start/open (open in unix, start in gitBash) file + extension - Opens a file in the current directory 
+start/open text.txt - opens the text file
+
+Opening a file in an application
+open/start -a Code text.txt (do not need -a on gitBash)
+
+rm- removes a specific file 
+rm text.txt - removes text.txt 
+
+rm * - removes everything in the current directory
+BE REALLY CAREFUL USING rm *, make sure you are in the correct directory
+rm ONLY removes files, not folders!
+
+rm -r directoryName/ - Removes a directory and all the files/folders inside it
