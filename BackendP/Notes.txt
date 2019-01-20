@@ -40,4 +40,14 @@ to exit REPL or anything, type CTRL C
 const fs = require("fs"); for example, gives us access to the file system module
 
 // Using External Node Modules 
+// To use an External module that is not bundled in Nodejs by default, you can use the Node Package Manager (npm) to incorporate other modules into your code! npm is bundled with node so we do not have to install it separately.
+// Running npm init will initialize npm 
+ // First name your package, press enter to use default 
+ // Then declare a version
+ // Then add a description
+ // Then you will be asked for an entry point, this is you JS file (index.js by default).
+ // This creates a package.JSON file which is a description of our npm files, now when we install packages, they will be added to this file as a dependency of our project!
+ // to install a module npm i module_name --save
+// This module will now be added as a dependency to our package.JSON file!
 
+// JSON is simply a file that stores and structures data 
