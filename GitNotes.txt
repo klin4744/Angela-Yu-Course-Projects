@@ -39,3 +39,28 @@ is very useful. You can create this by running "touch .gitignore" in a terminal 
 Inside this gitignore file, you can add all the file names you dont want to commit (case sensitive) on separate lines.
 You must include the filename and extensions.
 2. Now when you run git add . and git commit -m "message", these files will not be added.
+
+/////////////
+// Cloning //
+/////////////
+Cloning allows us to pull all the commits and files from a local repository and add it to our working directory.
+1. First find the local repository and hover or click on clone. If you hover on clone, you can copy the url of that
+local repository
+2. In your terminal type: git clone link
+3. You will now have the folder and all of its commits on your working directory!
+4. Note: you cannot push any changes to the local repository unless you have permission to.
+
+///////////////////////////
+// Branching and Merging //
+///////////////////////////
+Instead of continuing to commit ONLY to our master branch, we can create a side branch and commit to that branch for 
+experimental features etc. This side branch lets us try things out and commit to that branch while also working on our
+master branch. Perhaps we are making an app and we know which steps we need to take to complete it. We'd make all those
+commits to our master branch. Along development, you may want to try a different approach or add new features, you can 
+then create a branch to develop these new features experimentally. If you then decide these features are really good, you
+can send a merge request to add these changes to our main project.
+
+
+For large projects you will see lots of branching because the master branch should only contain main features and 
+working code. Teams will usually branch to run tests or develop features that could potentially break the master branch
+code
