@@ -71,4 +71,22 @@ code
 4. To switch branches, type "git checkout branchname."
 5. In different branches we can change files and commit those changes without changing our master branch files! This means
 we can work on copies of files from our master branch without ever touching our master branch!
+6. New files created or modified in the master branch will not get added to the branch after the branch is already
+created.
+
+MERGING
+If you like the changes you made on your branch,
+1. Navigate to your master branch
+2. type git merge branchname
+3. You will now be in VIM which lets you add a merge message if you'd like, if not type esc, :q! enter to quit
+4. Now all the changes from our branch will be merged onto our master branch. Our new branch will still exist but now
+all changes we made will overwrite the master branch files
+
+You can do this manually on the github website. Create a new repo, make sure to add a README file 
+
+To do this, just go to your local github repo, click on branch and create a new branch. 
+1. You can click new pull request to go to the comparison page which will show any changes you made between the 
+branches. You can then decide if you want to create a pull request which will merge your two branches.
+
+
 
