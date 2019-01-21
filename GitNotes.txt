@@ -88,5 +88,31 @@ To do this, just go to your local github repo, click on branch and create a new 
 1. You can click new pull request to go to the comparison page which will show any changes you made between the 
 branches. You can then decide if you want to create a pull request which will merge your two branches.
 
+//////////////////////
+// Forking and Pull //
+//////////////////////
+If you want to work in a team of programmers, forking and pulling are required.
+
+Forking - Allows you to take a copy of someone's remote repository and change code in it and push that to
+their remote repository. If that someone is not trusted, they can send you a pull request
+which you can review to accept any changes. This is like a suggestion. Only people with given 
+permissions have permission to directly edit your code. This is used in teams. This is called a pull request
+because the person with the original repository is pulling the edited files over to the original. After
+accepting the pull request, you can merge the repository.
+
+To Fork:
+1. Look for the repo you want to fork
+2. click fork on the top right, this gives you a copy of the remote repository and places it into your 
+github account as a new repository.
+
+- You can now make changes and commit them 
+- The person that owns the original file, will see a branch of any changes you made along with who made
+those changes in their network tab of the repo you forked.
+- Now you can create a new pull request, add a note of what you've done and why you think what you've done
+is good then send the request. 
+- The person that owns the repository will see a open pull request under the repo you forked and can
+choose to merge the pull request. They can also look at all commits and changes and leave comments.
+
+
 
 
