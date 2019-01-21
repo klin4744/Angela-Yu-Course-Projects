@@ -64,3 +64,11 @@ can send a merge request to add these changes to our main project.
 For large projects you will see lots of branching because the master branch should only contain main features and 
 working code. Teams will usually branch to run tests or develop features that could potentially break the master branch
 code
+
+1. To add a branch, type "git branch branch-name"
+2. To check which branches you have, type "git branch"
+3. The asterik points to the branch we currently are at.
+4. To switch branches, type "git checkout branchname."
+5. In different branches we can change files and commit those changes without changing our master branch files! This means
+we can work on copies of files from our master branch without ever touching our master branch!
+
