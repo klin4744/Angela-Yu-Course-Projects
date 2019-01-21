@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <!-- To submit to our server, we need to send a request. A post request sends data to our server -->
+    <!-- The action must match the route of the page that makes the post request -->
+    <form action="/" method="post">
+      <!-- The name property is like a variable name which will let us pull information from the input after a post -->
+      <!-- HTTP return codes: 1** Hold on, 2** success data passed, 3** security error go away, 4** you did something wrong, 5** I did something wrong -->
+      <input type="number" name="num1" placeholder="First Number" />
+      <input type="number" name="num2" placeholder="Second Name" />
+      <button type="submit" name="submit">Calculate</button>
+    </form>
+  </body>
+</html>
