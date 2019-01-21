@@ -1,0 +1,41 @@
+//////////////////////////////
+// Version Control with Git //
+//////////////////////////////
+1. In the project directory, first initialize git with your terminal by typing "git init". This creates a hidden git
+folder that tracks changes. You will not see this folder in explorer but you can see it by typing "ls -a" in your terminal.
+
+
+2. To keep track of changes of files in our directory, we must add the file to our staging directory. We can track files
+that git is monitoring using the "git status" command. Any file that is green is being tracked by git. To add a file to
+the staging directory, we must type "add filename.fileextension." If you have multiple files, you can use "$git add ." to
+add everything in the directory to the staging area.
+
+3. When your files are added to the staging area, you can make a commit by typing "$git commit -m "commit message"".
+NOTE: It is best practice to write your commit message in present tense, and for all projects these messages should
+be somewhat thoughful so if you have to rollback, you'll know exactly where you should roll back to.
+
+4. If you want to revert a change, you can use the command git checkout to rollback to the previous version.
+
+/////////////////////////////////
+// Creating a local repository //
+/////////////////////////////////
+1. When you create a local repository on github, you will be given a unique link which will let you push the files in
+your working directory into that local repository. This makes your code availible on github's servers and allows for
+pair coding and storage. 
+2. To do this in your terminal, after your commits are made, add these two commands:
+git remote add origin yourgithublink
+NOTE: the origin in this line can be any line, but best practice uses origin by default
+
+then to push your commits:
+git push -u origin master
+Note: origin much match whatever name you set before, master can be changed as well but means we want to push to our
+master branch
+
+///////////////
+// gitignore //
+///////////////
+1. If you have files that you don't want to push into your repository for everyone to see, creating a gitignore file
+is very useful. You can create this by running "touch .gitignore" in a terminal in the directory of your project.
+Inside this gitignore file, you can add all the file names you dont want to commit (case sensitive) on separate lines.
+You must include the filename and extensions.
+2. Now when you run git add . and git commit -m "message", these files will not be added.
