@@ -1,0 +1,48 @@
+API or Application Programming Interface is a set of commands, functions, protocols, and objects that programmers can use to create software or interact with an eternal system.
+
+APIs provide users with standard commands for performing common operations so they do not have to write the code from scratch.
+
+Examples of API 
+APIs to create software - jQuery. Code that someone else has written to create software.
+
+** APIs to interact with external systems - What people generally refer to when they talk about APIs. These kind of APIs interact with some kind of external system to get some kind of information to be used.
+
+Below is an example of when we may need an API. Lets say we want to use data from Facebook, we can send a get request to their server and perhaps get a response that we can use to interact with our website, etc.
+
+Example:            get 
+                  Request
+Your Server ----------------> Someone else's server 
+            <----------------
+                Response (all the files we need)
+
+In reality, we cant send a request directly to someone's server, we must do so through an API which modulates what kind of information we can request for and recieve from the server. The API is like an intermediate of this interaction and only allows us to use some data. Imagine the API as a menu of sorts, we can "order" certain pieces of data from the server.
+
+To make a API request:
+1. Find API documentation of an API you'd like to use. One of them that you can use is Bitcoin Average.
+2. The documentation will show you how to make a request and will show you how the response is structured.
+
+// Curl //
+cURL is a client for URLs. It is a way to send HTTP requests through a terminal. It allows us to interact with an URL on the command line
+
+On the command line, curl link sends a get request to the specified link and outputs the response
+Example: curl https://apiv2.bitcoinaverage.com/constants/exchangerates/global
+
+Sometimes we need to use parameters for the API. These parameters allow us to pull specific pieces of information.
+
+Question marks in URLs specify that things following are parameters.
+
+When we submit requests with parameters to a server, it will look into its database and send the corresponding response back.
+
+API keys
+Authentication keys that allow us to send API requests to servers. This key lets the server know exactly who is doing the request and can give you permission to make that request. This is how APIs monitor requests and limit them. 
+
+Post Requests
+We can get data but we can also post data to servers. Not all APIs will have both of these options however. 
+
+If you send a request that is not possible, you will get a 404 response. 
+
+YOU MUST USE DOCUMENTATION 
+- documentation will help us figure out what to do!
+
+To find a list of available APIS:
+Use: https://any-api.com 
