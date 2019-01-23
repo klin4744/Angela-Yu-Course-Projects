@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
-const key = "0469dc1c438a7749a7f4d0a5a47f6e1b-us20";
+const key;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,10 +20,17 @@ app.post("/", function(req, res) {
     members: [
       {
         email_address: email,
-        status: "subscribed"
+        status: "subscribed",
+        merge_fields: {
+          FNAME: firstName,
+          LNAME: lastName
+        }
       }
     ]
   };
+  app.post("/failure", function(req, res) {
+    res.redirect("/");
+  });
   let jsonData = JSON.stringify(data);
   let options = {
     url: "https://us20.api.mailchimp.com/3.0/lists/548b5a6b88",
@@ -34,15 +41,16 @@ app.post("/", function(req, res) {
     body: jsonData
   };
   request(options, function(error, response, body) {
-    if (error) {
-      console.log(error);
-    } else {
+    if (error || response.statusCode != 200) {
       console.log(response.statusCode);
+      res.sendFile(__dirname + "/failure.html");
+    } else {
+      res.sendFile(__dirname + "/success.html");
     }
   });
 });
 
 // Listen
-app.listen(3000, function(req, res) {
+app.listen(process.env.PORT || 3000, function(req, res) {
   console.log("The server has been started in port 3000");
 });
