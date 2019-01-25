@@ -38,13 +38,15 @@ app.get("/contact", function(req, res) {
 // posts route
 app.get("/posts/:postId", function(req, res) {
   posts.forEach(post => {
+    // OR if you have lodash
+    // just do:
+    // if(_.lowerCase(post.title) === _.lowerCase(req.params.postId))
     let title = post.title.toUpperCase();
     let text = req.params.postId.toUpperCase();
     let formatedTitle = title.replace(/\s/gi, "-");
     let formattedText = text.replace(/\s/gi, "-");
     if (formatedTitle === formattedText) {
-      console.log("Match Found!");
-      return;
+      res.render("post", { title: post.title, content: post.content });
     }
   });
 });
