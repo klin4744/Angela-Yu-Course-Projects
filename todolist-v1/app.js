@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 let items = ["Buy Food", "Cook Food", "Eat Food"];
+let workItems = ["Do Work"];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -19,12 +20,24 @@ app.get("/", function(req, res) {
   let day = today.toLocaleDateString("en-US", options);
 
   // The key has to match what value you put in the EJS marker! This render method renders the list.ejs file in our views folder and passes the variable day as kindOfDay to our ejs file
-  res.render("list", { day, items });
+  res.render("list", { listTitle: day, items });
 });
 app.post("/", function(req, res) {
+  console.log(req.body.list);
   let newItem = req.body.newItem;
-  items.push(newItem);
-  res.redirect("/");
+  if (req.body.list === "Work") {
+    workItems.push(newItem);
+    res.redirect("/work");
+  } else {
+    items.push(newItem);
+    res.redirect("/");
+  }
+});
+app.get("/work", function(req, res) {
+  res.render("list", { listTitle: "Work List", items: workItems });
+});
+app.get("/about", function(req, res) {
+  res.render("about");
 });
 
 app.listen(3000, function() {
