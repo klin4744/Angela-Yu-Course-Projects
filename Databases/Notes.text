@@ -1,0 +1,47 @@
+////////////////
+// Databases //
+///////////////
+
+Databases are used mostly to store data. There are a ton of different availible databases at the moment and each of them store and read data in different ways.
+
+In general, there are two types (families) of databases: SQL-based databases and NoSQL-based databases 
+
+///////////////////////////////
+SQL - Structured Query Language
+///////////////////////////////
+Popular examples: MySQL and PostgreSQL
+Strucutre: SQL databases groups data into tables such as:
+             Customers
+First Name   Last Name     Address
+John            Doe      32 Cherry Blvd
+Angela          Yu        12 Sunset Dr
+
+This means SQL-based databases are really good for structured data but are not as flexible as NoSQL databases.
+
+For example, we cannot add special kind of data. FOr example, using the table from above, imagine one of the users wanted to give an email address and another didnt want to give an address for privacy reasons. We then have:
+
+              Customers
+First Name   Last Name     Address
+John            Doe      32 Cherry Blvd  john@gmail.com
+Angela          Yu        
+
+Now we have a really irregular table. SQL databases will try to square off this databases, areas with no data will get replaced by null which can give us undesired results. Empty columns would have to be filled and declared as well.
+
+//////////////////////////////////////////
+NoSQL - Not only Structured Query Language
+//////////////////////////////////////////
+Popular examples: mongoDB and redis 
+
+NoSQL can be structured in any way not SQL. For example, MongoDB databases can store data as a list of objects:
+{
+  first_name: "John",
+  last_name: "Doe",
+  address: "32 Cherry Blvd",
+  email: "john@gmail.com"
+}
+{
+  first_name: "Angela",
+  last_name: "Yu",
+  address: "12 Sunset Drive",
+}
+In this format, if we added new data to one specific person, we would not need to modify the entire table. Infact, our data do not have to follow the same format at all!
