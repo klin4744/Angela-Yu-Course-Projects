@@ -44,4 +44,53 @@ NoSQL can be structured in any way not SQL. For example, MongoDB databases can s
   last_name: "Yu",
   address: "12 Sunset Drive",
 }
+
 In this format, if we added new data to one specific person, we would not need to modify the entire table. Infact, our data do not have to follow the same format at all!
+
+
+       // Relationships between data //
+SQL - Relational    ||   NoSQL - Non-Relational
+
+The main advantage of SQL databases is they are great for storing relational information. Related pieces of data are grouped into sets of tables that are relational. You may have a table with just customers containing their contact information and their names. Another table with their orders, and a order of each product name and price. The beauty is that all three of these tables can be linked by some piece of data on a different table, we therefore have MANY pieces of data for one customer.
+
+With NoSQL databases, we have to intricately think of how we would represent the data, we can either toss in all the data in one object or perhaps prevent repetition by using references:
+{
+  order_id: order_01,
+  customer: person_01,
+  products: product_01,
+  order_quantity: 12
+}
+{
+  person_id: person_01,
+  first_name: "Angela",
+  last_name: "Yu",
+  address: "12 Sunset Drive"
+}
+{
+  product_id: product_01,
+  product_name: "Pencil",
+  product_price: 0.80
+}
+We can find the information that we're looking for here by calling references just as we would a table, but we'd have to take the extra steps the think of this format and store it in this way.
+  - This also suffers two issues a SQL database would solve. It is slower and less outright structured than a SQL database.
+
+Rule of thumb:
+
+If we have structured data that have lots of relationships between each other, use SQL-based.
+
+If we have more unique data, use NoSQL. Example would be instagram users who may have many posts which we can map out easily.
+
+// Scalability //
+NoSQL's major advantage over SQL databases is that they use LESS resources and are much easier to scale up. MongoDB, for example, stores data in much small chucks, allowing for a distributed database structure. 
+
+SQL - Stacking on top of each other, will need more powerful computers as we scale up. 
+
+MongoDB - Database can be spread out throughout many different systems, can be much faster.
+
+
+MySQL                       MongoDB
+More Mature                 Shiny and New 
+Table Structure             Document Structure 
+Requires a Schema           More Flexible to Changes
+Great with Relationships    Bad at complex relationships
+Scales Vertically           Horizontally Scalable
