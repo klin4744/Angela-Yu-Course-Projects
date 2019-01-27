@@ -130,3 +130,12 @@ Mongo with Node
 MongoDB is really limited inside a terminal despite terminal MongoDB being its most natural form.
 
 There are two ways that we can use MongoDB with our apps, the two main ways of doing this is using the native MongoDB driver and/or Mongoose.
+
+mongoDB native drivers:
+
+1. Create a project directory
+2. Create an app.js file 
+3. Initialize npm 
+4. npm i mongodb 
+5. use the driver docs and make sure mongod is running in terminal!
+
