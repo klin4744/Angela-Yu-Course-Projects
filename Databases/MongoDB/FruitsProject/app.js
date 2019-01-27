@@ -29,12 +29,35 @@ const personSchema = new mongoose.Schema({
   name: String,
   age: Number
 });
-const Person = mongoose.model("People", personSchema);
+const Person = mongoose.model("Person", personSchema);
 const person = new Person({
   name: "John",
   age: 37
 });
 person.save();
+// Save data in bulk
+const kiwi = new Fruit({
+  name: "Kiwi",
+  score: 10,
+  review: "The best fruit!"
+});
+const orange = new Fruit({
+  name: "Orange",
+  score: 4,
+  review: "Too sour for me"
+});
+const banana = new Fruit({
+  name: "Banana",
+  score: 8,
+  review: "Good stuff"
+});
+Fruit.insertMany([kiwi, orange, banana], function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Successfully saved all the fruits to fruitsDB");
+  }
+});
 
 // const MongoClient = require("mongodb").MongoClient;
 // // Assert has to do with testing. It does data validation
