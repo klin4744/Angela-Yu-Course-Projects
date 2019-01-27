@@ -17,6 +17,10 @@ const fruitSchema = new mongoose.Schema({
 });
 // First input is the collection name, pass in the singular form and mongoose will automatically convert it to its plural version. Here we use Fruit because our collection will be called fruits (plural form and drops capital F, this is done behind the scenes with lodash). This creates a new Fruits collection and every fruit within that colleciton must follow our fruit schema
 const Fruit = mongoose.model("Fruit", fruitSchema);
+
+/////////////////////////
+// Adding Information //
+///////////////////////
 // When we add new fruits, we use our Fruit above
 const fruit = new Fruit({
   name: "Apple",
@@ -34,7 +38,7 @@ const person = new Person({
   name: "John",
   age: 37
 });
-person.save();
+// person.save();
 // Save data in bulk
 const kiwi = new Fruit({
   name: "Kiwi",
@@ -51,13 +55,32 @@ const banana = new Fruit({
   score: 8,
   review: "Good stuff"
 });
-Fruit.insertMany([kiwi, orange, banana], function(err) {
+// Make sure to only call this one time or it will keep adding this information into our database!
+// Fruit.insertMany([kiwi, orange, banana], function(err) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Successfully saved all the fruits to fruitsDB");
+//   }
+// });
+
+//////////////////////////
+// Reading Information //
+/////////////////////////
+
+// We access our fruit collection easily by:, this find method can take a callback with two inputs, an error and what the find returns. Since we arent querying, we get all of our fruits back.
+Fruit.find(function(err, fruits) {
   if (err) {
     console.log(err);
   } else {
-    console.log("Successfully saved all the fruits to fruitsDB");
+    fruits.forEach(fruit => {
+      console.log(fruit.name);
+    });
   }
+  // We want to close the connection to the DB on our last action
+  mongoose.connection.close();
 });
+// We get back an array of objects (fruits) that we can easily manipulate
 
 // const MongoClient = require("mongodb").MongoClient;
 // // Assert has to do with testing. It does data validation
