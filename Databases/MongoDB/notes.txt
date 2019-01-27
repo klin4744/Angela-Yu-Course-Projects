@@ -139,3 +139,8 @@ mongoDB native drivers:
 4. npm i mongodb 
 5. use the driver docs and make sure mongod is running in terminal!
 
+/////////////////
+Mongoose - A ODM 
+/////////////////
+
+1. npm i mongoose 
