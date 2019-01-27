@@ -94,3 +94,12 @@ Table Structure             Document Structure
 Requires a Schema           More Flexible to Changes
 Great with Relationships    Bad at complex relationships
 Scales Vertically           Horizontally Scalable
+
+
+What does a database do?
+Create
+Read 
+Update 
+Destroy 
+
+or CRUD.

@@ -1,0 +1,97 @@
+// Creating Tables //
+
+CREATE TABLE products (
+  id INT NOT NULL,
+  name STRING,
+  price MONEY,
+  PRIMARY KEY (id)
+)
+
+To create a table:
+CREATE TABLE table_name (
+  col_name data_type,
+  col_name data_type
+)
+If we place in NOT NULL after data, we are specifying that the table will NOT take new entries where that specific data is not included. For example, if we go on to insert a set without an ID in the example above,Since ID doesnt have a value, it will default to null which triggers an error since we set ID to NOT NULL 
+
+Inserting data 
+If you can fill a whole column:
+INSERT INTO table_name 
+VALUES (val1,val2,val3)
+
+If you can only fill some columns:
+INSERT INTO table_name (col1-name,col2-name,col3-name)
+VALUES (val1,val2,val3)
+
+
+// Reading Data //
+A common way to read data is through the SELECT command
+SELECT col-name FROM table_name; 
+will view the data of a specific column, if we want to view the entire name, we can use the wildcard * which mathces all columns 
+SELECT * FROM table_name;
+For multiple columns, just use a comma at delcaration:
+SELECT col-name1,col-name2 FROM table_name; 
+
+Looking at specific rows:
+
+SELECT * from table_name 
+WHERE id=1;
+
+Shows the entire row in which the ID is equivalent to 1.
+
+// Updating Data //
+
+UPDATE table_name 
+SET col1 = value1, col2 = value2 ....
+WHERE condition
+
+Ex 
+UPDATE products 
+SET price=1.5
+WHERE id=2
+
+
+Update by adding a Column 
+ALTER TABLE table_name 
+ADD col_name data_type
+
+
+// Delete Data //
+DELETE FROM table_name
+WHERE condition
+
+
+SQL Relationships 
+
+CREATE TABLE orders(
+	id INT NOT NULL,
+    order_number INT,
+    customer_id INT,
+    product_id INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(customer_id) REFERENCES customers(id)
+    FOREIGN KEY(product_id) REFERENCES products(id)
+)
+
+To create relationships we must create new tables and use the FOREIGN KEY property, pass in the id from the current table we want to use as a reference and use the REFERENCES property to select another table and a property from that table, this CREATES a linkage between our current table and another table. In the example above, the property customer_id in orders corresponds to the property id in customers and the property product_id corresponds to the id property in products.
+
+NOTE PRIMARY KEYS CANNOT APPEAR IN A TABLE TWICE!
+
+
+///////////////////////////////////
+            Using Joins
+///////////////////////////////////
+
+Joins join tables with relationships to each other. We can do this by using the keyword JOIN. There are alot of joins but the most common is a INNER JOIN, in which we join by matching the linked cols of the tables we join. The basic syntax for this join is: 
+SELECT col_name(s)
+FROM table1_name 
+INNER JOIN table2_name ON table1.col_name = table2_name.col_name;
+
+Example:
+SELECT orders.order_number, customers.first_name, customers.last_name, customers.address
+From orders
+inner join customers on orders.customer_id = customers.id 
+
+At the top, we are declaring all the columns we want to have after the join
+At line 92, we choose our first table 
+At line 93, we call inner join and select the second table. orders.customer_id is the reference point we declared on the customers table, we set this reference equal to its corresponding property on the second table.

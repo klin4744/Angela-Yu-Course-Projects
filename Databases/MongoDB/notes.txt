@@ -1,0 +1,132 @@
+///////////////////////
+MongoDB CRUD Operations
+///////////////////////
+
+To start mongoDB, open up your terminal and type "$mongod". When you see the line waiting for connections on port 27017, your server is set.
+
+Next, on another tab or terminal window, run "$mongo" to enter the mongo shell. You will now see a ">" instead of a "$" in your terminal. This mongo shell allows us to interact with mongoDB using the command line.
+
+The command ">help" will show all availible commands you can run.
+
+show dbs, show all availble databases at the moment it's initialized. By default you will have admin,config, and local but with no data in them.
+
+1. Creating databases 
+
+Example:
+1. Create the database
+  "> use database_name" => "use shopDB" 
+  - By default you will now switch to the newly created shopDB
+  ** NOTE: If you run show dbs at this point, you will not see your new shopDB because it has yet to have any content!
+2. Create data 
+  - You can type db to check which database you're in, make sure you are in the right db!
+  db.nameOfCollection.insertOne({
+    name: "sue",
+    age: 25
+  })
+3. Note: If you declare a property with a _, that section becomes a unique section and will be used as the main identifier for that row.
+  with insertOne, you are inserting a single record or single row of data, you pass in a javascript object. If the collection name does not exist in the database, this execution will automatically create it for you!
+- NOTE: you can also use db.collection_name.insertMany({row1},{row2},{row3})
+3. Now you can use show collections to view the current collections
+
+
+2. Reading from Databases
+
+To read data from a database:
+db.nameOfCollection.find()
+- Without passing inputs to find, this will return all the data within the database!
+
+Find specific data:
+You can find specific data by using queries:
+
+Examples:
+db.products.find({name:"Pencil"})
+db.products.find({price: {$gt: 1}}) //finds all rows in which the price is greater than 1
+// A list of these operations can be found here: 
+https://docs.mongodb.com/manual/reference/operator/query/
+
+we can also specify which fields to return by inserting a projection input:
+db.products.find({_id:1},{name: 1, id:0})
+The above returns the name of the row with an id of 1, by setting id:0 in the projection, id will not be returned along with name 
+
+3. Updating Data 
+
+db.products.updateOne({id:1},{$set: {stock:32}})
+
+4. Delete Data 
+db.collection.deleteOne() && db.collection.deleteMany()
+db.users.deleteMany({status:"true"}), deletes all entries with a status property of true 
+
+
+////////////////////////
+Relationships in MongoDB
+////////////////////////
+
+Method 1 - We can embedd other datas within our data 
+db.products.insertOne({
+  _id:3,
+  name:"Rubber",
+  price: 1.30,
+  stock: 43,
+  reviews: [
+    {
+      authorName: "Sally",
+      rating: 5,
+      review: "Best rubber ever!"
+    }
+  ]
+})
+If more reviews come in, we can append them into our reviews array. This makes it easy to create a relationship between our rubber data and our review data. This is a nice way to represent this kind of data 
+// NOTE: You may want to write the insert code in an editor then paste it into your terminal for easier formatting.
+
+db.products.insertOne({
+  _id: 2,
+  name: "Pencil",
+  price: 0.8,
+  stock: 12,
+  reviews: [
+    {
+      authorName: "John",
+      rating: 1,
+      review: "TERRIBLE!"
+    },
+      {
+      authorName: "Shin",
+      rating: 5,
+      review: "WOW!!"
+    }
+  ]
+})
+
+Another common format: 
+Multiple collections:
+
+Products collection 
+{
+  _id: 1,
+  name: "Pen",
+  price: 1.20,
+  stock: 32 
+}
+{
+  _id,
+  name: "Pencil",
+  price: 0.80,
+  stock: 12
+}
+
+Orders collection 
+{
+  orderNumber:3243,
+  productsOrdered: [1,2]
+}
+If we reference to our products collection, we can see that order 3243 included a pen and a pencil 
+
+// Using MongoDB outside of the terminal //
+
+////////////////
+Mongo with Node 
+////////////////
+
+MongoDB is really limited inside a terminal despite terminal MongoDB being its most natural form.
+
+There are two ways that we can use MongoDB with our apps, the two main ways of doing this is using the native MongoDB driver and/or Mongoose.
