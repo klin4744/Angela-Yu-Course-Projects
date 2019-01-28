@@ -61,17 +61,25 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
   const itemName = req.body.newItem;
+  const listName = req.body.list;
+  console.log(listName);
   const itemToInsert = new Item({
     name: itemName
   });
-  Item.create(itemToInsert, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Added!");
-    }
-  });
-  res.redirect("/");
+  if (listName === "Today") {
+    itemToInsert.save();
+    res.redirect("/");
+  } else {
+    List.findOne({ name: listName }, function(err, foundList) {
+      if (err) {
+        console.log(err);
+      } else {
+        foundList.items.push(itemToInsert);
+        foundList.save();
+        res.redirect("/" + listName);
+      }
+    });
+  }
 });
 
 app.post("/delete", function(req, res) {
