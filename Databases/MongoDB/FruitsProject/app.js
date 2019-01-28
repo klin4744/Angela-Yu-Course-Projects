@@ -39,20 +39,21 @@ const fruit = new Fruit({
 // fruit.save();
 const personSchema = new mongoose.Schema({
   name: String,
-  age: Number
+  age: Number,
+  favouriteFruit: fruitSchema
 });
 const Person = mongoose.model("Person", personSchema);
-const person = new Person({
-  name: "John",
-  age: 37
-});
-person.save();
-// Save data in bulk
-// const kiwi = new Fruit({
-//   name: "Kiwi",
-//   score: 10,
-//   review: "The best fruit!"
+// const person = new Person({
+//   name: "John",
+//   age: 37
 // });
+// person.save();
+// Save data in bulk
+const kiwi = new Fruit({
+  name: "Kiwi",
+  score: 10,
+  review: "The best fruit!"
+});
 // const orange = new Fruit({
 //   name: "Orange",
 //   score: 4,
@@ -104,6 +105,13 @@ Fruit.updateOne(
     }
   }
 );
+Person.updateOne({ name: "John" }, { favouriteFruit: kiwi }, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("John document updated!");
+  }
+});
 
 Fruit.deleteOne({ name: "Peach" }, err => {
   if (err) {
@@ -112,6 +120,24 @@ Fruit.deleteOne({ name: "Peach" }, err => {
     console.log("Deleted!");
   }
 });
+////////////////////////////////
+// Relationships in Mongoose //
+///////////////////////////////
+// To establish a relationship in mongoose, we need to add a key with the value of another collection's  schema
+const pineapple = new Fruit({
+  name: "Pineapple",
+  score: 9,
+  review: "Great Fruit"
+});
+pineapple.save();
+const person = new Person({
+  name: "Amy",
+  age: 12,
+  favouriteFruit: pineapple // Favorite fruits refers to our pineapple
+});
+// person.save();
+// This EMBEDDS the pinapple document into the Amy Document
+
 // Person.deleteMany({ name: "John" }, err => {
 //   if (err) {
 //     console.log(err);
