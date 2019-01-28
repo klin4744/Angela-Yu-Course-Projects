@@ -33,6 +33,11 @@ const item3 = new Item({
 });
 // Insert our items into our database under the items collection
 const defaultItems = [item1, item2, item3];
+const listSchema = new Schema({
+  name: String,
+  items: [itemsSchema]
+});
+const List = mongoose.model("List", listSchema);
 // Read from our database
 app.get("/", function(req, res) {
   Item.find({}, function(err, results) {
@@ -81,8 +86,27 @@ app.post("/delete", function(req, res) {
   res.redirect("/");
 });
 
-app.get("/work", function(req, res) {
-  res.render("list", { listTitle: "Work List", newListItems: workItems });
+app.get("/:name", function(req, res) {
+  const customListName = req.params.name;
+  List.findOne({ name: customListName }, function(err, list) {
+    if (!err) {
+      if (!list) {
+        const list = new List({
+          name: customListName,
+          items: defaultItems
+        });
+        list.save();
+        res.redirect("/" + customListName);
+      } else {
+        res.render("list", {
+          listTitle: customListName,
+          newListItems: list.items
+        });
+      }
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 app.get("/about", function(req, res) {
