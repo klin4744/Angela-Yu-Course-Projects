@@ -11,8 +11,16 @@ mongoose.connect(
 );
 // Create a schema for every new FRUIT document
 const fruitSchema = new mongoose.Schema({
-  name: String,
-  rating: Number,
+  name: {
+    type: String,
+    required: [true, "Make sure you enter a name for data entry!"] //second input is message if not true
+  },
+  rating: {
+    // we can insert validation here just like we would using asserts. Data that does not match this validation will be REJECTED!
+    type: Number,
+    min: 1,
+    max: 10
+  },
   review: String
 });
 // First input is the collection name, pass in the singular form and mongoose will automatically convert it to its plural version. Here we use Fruit because our collection will be called fruits (plural form and drops capital F, this is done behind the scenes with lodash). This creates a new Fruits collection and every fruit within that colleciton must follow our fruit schema
@@ -38,23 +46,23 @@ const person = new Person({
   name: "John",
   age: 37
 });
-// person.save();
+person.save();
 // Save data in bulk
-const kiwi = new Fruit({
-  name: "Kiwi",
-  score: 10,
-  review: "The best fruit!"
-});
-const orange = new Fruit({
-  name: "Orange",
-  score: 4,
-  review: "Too sour for me"
-});
-const banana = new Fruit({
-  name: "Banana",
-  score: 8,
-  review: "Good stuff"
-});
+// const kiwi = new Fruit({
+//   name: "Kiwi",
+//   score: 10,
+//   review: "The best fruit!"
+// });
+// const orange = new Fruit({
+//   name: "Orange",
+//   score: 4,
+//   review: "Too sour for me"
+// });
+// const banana = new Fruit({
+//   name: "Banana",
+//   score: 8,
+//   review: "Good stuff"
+// });
 // Make sure to only call this one time or it will keep adding this information into our database!
 // Fruit.insertMany([kiwi, orange, banana], function(err) {
 //   if (err) {
@@ -81,6 +89,36 @@ Fruit.find(function(err, fruits) {
   mongoose.connection.close();
 });
 // We get back an array of objects (fruits) that we can easily manipulate
+
+////////////////////////////////
+// Update/Delete Information //
+///////////////////////////////
+Fruit.updateOne(
+  { _id: "5c4d4682b88f31ad388a21bd" },
+  { name: "Peach" },
+  function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Successfully updated the document.");
+    }
+  }
+);
+
+Fruit.deleteOne({ name: "Peach" }, err => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Deleted!");
+  }
+});
+// Person.deleteMany({ name: "John" }, err => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Deleted");
+//   }
+// });
 
 // const MongoClient = require("mongodb").MongoClient;
 // // Assert has to do with testing. It does data validation
