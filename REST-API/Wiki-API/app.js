@@ -20,12 +20,31 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.get("/GET", function(req, res) {
+app.get("/articles", function(req, res) {
   Article.find({}, function(err, response) {
-    if (!error) {
+    if (!err) {
       res.send(response);
+    } else {
+      res.send(err);
     }
   });
+});
+app.post("/articles", function(req, res) {
+  if (!req.body.title || !req.body.content) {
+    res.send("This is not a valid request");
+  } else {
+    const newPost = new Article({
+      title: req.body.title,
+      content: req.body.content
+    });
+    newPost.save(function(err) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send("Successfully Posted!");
+      }
+    });
+  }
 });
 
 app.listen(3000, function() {
