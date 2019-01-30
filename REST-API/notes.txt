@@ -1,0 +1,57 @@
+////////////////
+    REST API
+///////////////
+
+What does REST mean? 
+REpresentational
+State
+Transfer
+
+The client server architecture
+
+Client  ->   Server 
+
+The client makes a request to the server which the server then checks to see if it is valid then either gives an error or accepts the request and gives something back.
+
+The request from the client is an HTTP/HTTPS (secure) request.
+
+There are also FTP (file transfer protocall) request. 
+
+You must submit the correct request type to get a response. 
+
+HTTPS is different than HTTP because it is masked by a hash function.
+
+After the request is made the server sends back a page, a file, etc. 
+
+The request is processed by the server but the server can get information from a database. The server can only do a fixed number of things. The server may also have an API which acts as a intermediate step between the server and the client which defines which request can be made to the server. 
+
+REST is a architectural style used to make APIs. There are other styles as well.
+
+RESTful API rules:
+1. Use HTTP request verbs
+2. Use specific pattern of routes/endpoint URLs.
+
+The HTTP verbs
+Get, Post, Put, Patch, and Delete
+
+Similar to CRUD:
+Create, read, update, delete.
+
+Get is similar to Read in CRUD. It searches through the API and returns some kind of data.
+
+Post is similar to create. It adds an entry to our API just like create adds data to our database. 
+
+Put and Patch are similar to update, they update and entry in our API or database.
+
+- a PUT request updates by REPLACING the entire entry. A patch request updates by updating the portion of the entry point that you want to be fixed (A single piece of data in the entry is replaced).
+
+Delete is the same as delete, it removes a specified piece of data.
+
+RESTful routing
+
+HTTP Verbs         /articles             /articles/1
+GET            Fetches all articles     Fetches 1 article 
+POST           Creates one article 
+PUT                                     Replaces article 1
+PATCH                                   Updates article 1 
+DELETE         Deletes all articles     Deletes article 1
