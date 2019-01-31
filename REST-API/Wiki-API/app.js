@@ -91,6 +91,36 @@ app
         }
       }
     );
+  })
+  .patch(function(req, res) {
+    Article.update(
+      {
+        title: req.params.articleID
+      },
+      {
+        $set: req.body
+      },
+      function(err) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(`The article ${req.params.articleID} has been updated`);
+        }
+      }
+    );
+  })
+  .delete(function(req, res) {
+    Article.delete(
+      { title: req.params.articleID },
+      { overwrite: true },
+      function(err) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(`The article ${req.params.articleID} has been deleted`);
+        }
+      }
+    );
   });
 
 app.listen(3000, function() {
