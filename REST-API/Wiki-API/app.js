@@ -20,38 +20,53 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.get("/articles", function(req, res) {
-  Article.find({}, function(err, response) {
-    if (!err) {
-      res.send(response);
-    } else {
-      res.send(err);
-    }
-  });
-});
-app.post("/articles", function(req, res) {
-  if (!req.body.title || !req.body.content) {
-    res.send("This is not a valid request");
-  } else {
-    const newPost = new Article({
-      title: req.body.title,
-      content: req.body.content
+// All Articles
+app
+  .route("/articles")
+  .get(function(req, res) {
+    Article.find({}, function(err, response) {
+      if (!err) {
+        res.send(response);
+      } else {
+        res.send(err);
+      }
     });
-    newPost.save(function(err) {
+  })
+  .post(function(req, res) {
+    if (!req.body.title || !req.body.content) {
+      res.send("This is not a valid request");
+    } else {
+      const newPost = new Article({
+        title: req.body.title,
+        content: req.body.content
+      });
+      newPost.save(function(err) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send("Successfully Posted!");
+        }
+      });
+    }
+  })
+  .delete(function(req, res) {
+    Article.deleteMany({}, function(err) {
       if (err) {
         res.send(err);
       } else {
-        res.send("Successfully Posted!");
+        res.send("All articles have been deleted");
       }
     });
-  }
-});
-app.delete("/articles", function(req, res) {
-  Article.deleteMany({}, function(err) {
-    if (err) {
-      res.send(err);
+  });
+
+// Specific articles
+app.route("/articles/:articleID").get(function(req, res) {
+  const articleName = req.params.articleID;
+  Article.findOne({ title: articleName }, function(err, match) {
+    if (!err && match) {
+      res.send(match);
     } else {
-      res.send("All articles have been deleted");
+      res.send(err || "No articles matching the given title found");
     }
   });
 });
