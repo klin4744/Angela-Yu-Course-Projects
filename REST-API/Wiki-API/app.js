@@ -110,7 +110,7 @@ app
     );
   })
   .delete(function(req, res) {
-    Article.delete(
+    Article.deleteOne(
       { title: req.params.articleID },
       { overwrite: true },
       function(err) {
