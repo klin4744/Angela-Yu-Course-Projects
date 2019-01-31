@@ -110,17 +110,13 @@ app
     );
   })
   .delete(function(req, res) {
-    Article.deleteOne(
-      { title: req.params.articleID },
-      { overwrite: true },
-      function(err) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.send(`The article ${req.params.articleID} has been deleted`);
-        }
+    Article.deleteOne({ title: req.params.articleID }, function(err) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(`The article ${req.params.articleID} has been deleted`);
       }
-    );
+    });
   });
 
 app.listen(3000, function() {
